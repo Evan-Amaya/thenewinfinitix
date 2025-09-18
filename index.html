@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The New Infinitix - Estudio Creativo de Pósters</title>
+    <link rel="shortcut icon" href="Logo Inifinitix.png">
+    
+    <!-- Google Fonts para un estilo más profesional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES Y TEMAS --- */
+        :root {
+            --primary-color: #ff3838;
+            --accent-color: #b8860b;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --card-bg-blur: rgba(255, 255, 255, 0.65);
+            --border-color-blur: rgba(255, 255, 255, 0.4);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #ff5555;
+            --accent-color: #ffd700;
+            --text-color: #e0e0e0;
+            --bg-color: #1a1a1a;
+            --card-bg-blur: rgba(20, 20, 20, 0.6);
+            --border-color-blur: rgba(255, 255, 255, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- RESET Y ESTILOS BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            background-image: url('fondo_Infinitix.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            line-height: 1.7;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- EFECTO DE CRISTAL (GLASSMORPHISM) --- */
+        .glass-effect {
+            background: var(--card-bg-blur);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color-blur);
+            box-shadow: 0 8px 32px 0 var(--shadow-color);
+            transition: background 0.3s ease, border 0.3s ease;
+        }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s ease-in-out;
+        }
+
+        header.scrolled {
+            border-radius: 0 0 25px 25px;
+            margin: 10px 5%;
+            width: 90%;
+            top: 0;
+        }
+        
+:root {
+    --header-height: 80px; /* ajustar si el header tiene otra altura */
+}
+
+/* header base (asegúrate de que header esté position:fixed) */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: 1000;
+    will-change: transform;
+    transform: translateY(0);
+    transition: transform 600ms cubic-bezier(.22,.9,.37,1), box-shadow 300ms;
+}
+
+/* clase auxiliar mientras se hace pequeño o se añade sombra */
+header.scrolled {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* cuando queremos que el header "baje" hasta abajo */
+header.slide-down {
+    transform: translateY(calc(100vh - var(--header-height)));
+}
+/* Evitar que contenido se mueva al hacer transform (sigue fijo) */
+/* ...existing code... */
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            transform: rotate(15deg);
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        /* --- MENÚ MÓVIL --- */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        main {
+            padding-top: 100px;
+        }
+
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 2rem auto;
+            border-radius: 25px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2 {
+            font-family: var(--font-heading);
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-shadow: 2px 2px 8px var(--shadow-color);
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            color: var(--accent-color);
+            font-size: 1.8rem;
+        }
+
+        /* --- SECCIÓN HERO (INICIO) --- */
+        #inicio {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: none;
+            border: none;
+            box-shadow: none;
+            margin-top: -100px;
+        }
+
+        .logo-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+        }
+
+        .hero-cta .cta-button {
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            margin: 0;
+        }
+
+        /* --- SECCIÓN GALERÍA --- */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .poster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .poster-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .poster-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px var(--shadow-color);
+        }
+
+        .poster-card img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .poster-info {
+            padding: 1.5rem;
+        }
+
+        /* --- SECCIÓN PROCESO --- */
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- SECCIÓN PRECIOS --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--accent-color);
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color-blur);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-cta {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .plan-cta:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- TESTIMONIOS --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .stars {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* --- FORMULARIO DE CONTACTO MEJORADO --- */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color-blur);
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: var(--font-body);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 1rem;
+            border: 2px dashed var(--accent-color);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-label:hover {
+            background: rgba(184, 134, 11, 0.1);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            border-radius: 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                gap: 3rem;
+                transition: right 0.5s ease-in-out;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="glass-effect">
+        <nav class="main-nav">
+            <a href="#inicio" class="nav-brand">TNI</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#pedido" class="cta-button">Hacer Pedido</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+    <div class="hero-content">
+        <div class="logo-container" style="width: 280px; height: 280px; margin: 0 auto 3rem; position: relative;">
+            <div style="position: absolute; inset: 0; background: var(--card-bg-blur); backdrop-filter: blur(20px); border-radius: 50%; border: 3px solid var(--accent-color); box-shadow: 0 20px 60px var(--shadow-color); display: flex; align-items: center; justify-content: center; padding: 2rem;">
+                <img src="Logo Inifinitix.png" alt="The New Infinitix Logo" style="width: 90%; height: auto; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));">
+            </div>
+        </div>
+        <h1 style="margin-bottom: 1.5rem; letter-spacing: 2px;">The New Infinitix</h1>
+        <p class="tagline" style="font-size: 1.4rem; max-width: 600px; margin: 0 auto 3rem; font-weight: 300;">Marca de Realización de posters</p>
+        <div class="hero-cta">
+            <a href="#pedido" class="cta-button" style="font-size: 1.3rem; padding: 1.2rem 3rem; box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);">Crea tu Cartel Personalizado</a>
+        </div>
+    </div>
+</section>
+        <section id="quienes-somos" class="glass-effect">
+    <h2>¿Quiénes Somos?</h2>
+    <div class="about-content">
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: center;">
+            Somos un equipo de diseñadores apasionados por transformar ideas en arte visual. 
+            En The New Infinitix creemos que cada espacio merece una historia única contada a través del diseño.
+        </p>
+        
+        <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0;">
+            <div class="team-member" style="text-align: center; padding: 2rem; border-radius: 15px;" class="glass-effect">
+                <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--accent-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--bg-color);">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Santiago</h3>
+                <p style="color: var(--accent-color); font-weight: bold;">Diseñador Minimalista</p>
+                <p>Especialista en diseños limpios y elegantes. Cree en la filosofía de "menos es más" para crear impacto visual duradero.</p>
+            </div>
+            
+            <div class="team-member" style="text-align: center; padding: 2rem; border-radius: 15px;" class="glass-effect">
+                <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--accent-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--bg-color);">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Evan</h3>
+                <p style="color: var(--accent-color); font-weight: bold;">Artista de Precisión</p>
+                <p>Maestro en los detalles. Sus diseños se caracterizan por la precisión técnica y la complejidad artística perfectamente balanceada.</p>
+            </div>
+            
+            <div class="team-member" style="text-align: center; padding: 2rem; border-radius: 15px;" class="glass-effect">
+                <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--accent-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--bg-color);">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Isaac</h3>
+                <p style="color: var(--accent-color); font-weight: bold;">Director Creativo</p>
+                <p>Especialista en arte cinematográfico y narrativa visual. Transforma conceptos complejos en historias visuales impactantes.</p>
+            </div>
+        </div>
+        
+        <div style="max-width: 800px; margin: 3rem auto 0; text-align: center;">
+            <h3 style="color: var(--accent-color); margin-bottom: 1.5rem;">Nuestra Misión</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Democratizar el arte personalizado, haciendo que cada persona pueda tener acceso a diseños únicos 
+                que reflejen su personalidad y transformen sus espacios. Creemos que el arte no debe ser un lujo, 
+                sino una expresión accesible de identidad y creatividad.
+            </p>
+            
+            <h3 style="color: var(--accent-color); margin: 2rem 0 1.5rem;">Nuestra Visión</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Ser el estudio creativo de referencia en Latinoamérica, reconocido por la calidad excepcional 
+                de nuestros diseños y por nuestra capacidad de capturar la esencia única de cada cliente en 
+                cada cartel que creamos.
+            </p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 3rem 0; text-align: center;">
+            <div>
+                <div style="font-size: 3rem; color: var(--accent-color); font-weight: bold;">500+</div>
+                <p>Carteles Creados</p>
+            </div>
+            <div>
+                <div style="font-size: 3rem; color: var(--accent-color); font-weight: bold;">3</div>
+                <p>Años de Experiencia</p>
+            </div>
+            <div>
+                <div style="font-size: 3rem; color: var(--accent-color); font-weight: bold;">98%</div>
+                <p>Clientes Satisfechos</p>
+            </div>
+            <div>
+                <div style="font-size: 3rem; color: var(--accent-color); font-weight: bold;">24h</div>
+                <p>Tiempo de Respuesta</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="galeria" class="glass-effect">
+    <h2>Galería de Carteles</h2>
+
+
+    <div class="poster-grid" aria-live="polite">
+        <figure class="poster-card" data-category="moderno">
+            <img loading="lazy" src="Imagen1.jpg" alt="Diseño Moderno - TNI" />
+            <figcaption class="poster-info glass-effect">
+                
+                <p>Estilo Moderno • Creado por TNI</p>
+            </figcaption>
+        </figure>
+
+        <figure class="poster-card" data-category="vintage">
+            <img loading="lazy" src="Imagen2.jpg" alt="Estilo Vintage - TNI" />
+            <figcaption class="poster-info glass-effect">
+                
+                <p>Elegancia y Satanica  • Creado por TNI</p>
+            </figcaption>
+        </figure>
+    </div>
+</section>
+
+
+        <section id="proceso" class="glass-effect">
+            <h2>Nuestro Proceso Creativo</h2>
+            <div class="process-timeline">
+                <div class="process-step glass-effect">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Consulta Inicial</h3>
+                    <p>Conversamos sobre tu idea, estilo preferido y especificaciones del cartel que deseas crear.</p>
+                </div>
+                <div class="process-step glass-effect">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Diseño y Bocetos</h3>
+                    <p>Nuestro equipo desarrolla bocetos iniciales basados en tus ideas y preferencias estéticas.</p>
+                </div>
+                <div class="process-step glass-effect">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Revisión y Ajustes</h3>
+                    <p>Te presentamos el diseño para tu aprobación y realizamos los ajustes necesarios.</p>
+                </div>
+                <div class="process-step glass-effect">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Producción Final</h3>
+                    <p>Una vez aprobado, procedemos con la impresión de alta calidad y preparación para entrega.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="precios" class="glass-effect">
+            <h2>Paquetes y Precios</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card glass-effect">
+                    <h3 class="plan-name">Básico</h3>
+                    <div class="plan-price">$10.000</div>
+                    <ul class="plan-features">
+                        <li>Diseño personalizado básico</li>
+                        <li>1 revisión incluida</li>
+                        <li>Formato digital alta resolución</li>
+                        <li>Entrega en 5-7 días</li>
+                    </ul>
+                    <button class="plan-cta">Elegir Plan</button>
+                </div>
+                <div class="pricing-card glass-effect featured">
+                    <h3 class="plan-name">Premium</h3>
+                    <div class="plan-price">$25.000</div>
+                    <ul class="plan-features">
+                        <li>Diseño personalizado avanzado</li>
+                        <li>3 revisiones incluidas</li>
+                        <li>Múltiples formatos digitales</li>
+                        <li>Impresión de calidad incluida</li>
+                        <li>Entrega en 3-5 días</li>
+                    </ul>
+                    <button class="plan-cta">Elegir Plan</button>
+                </div>
+                <div class="pricing-card glass-effect">
+                    <h3 class="plan-name">Profesional</h3>
+                    <div class="plan-price">$50.000</div>
+                    <ul class="plan-features">
+                        <li>Diseño completamente personalizado</li>
+                        <li>Revisiones ilimitadas</li>
+                        <li>Todos los formatos incluidos</li>
+                        <li>Impresión premium + enmarcado</li>
+                        <li>Entrega express (24-48h)</li>
+                        <li>Consultoría de diseño incluida</li>
+                    </ul>
+                    <button class="plan-cta">Elegir Plan</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonios" class="glass-effect">
+            <h2>Lo que Dicen Nuestros Clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-effect">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Increíble trabajo. El cartel que crearon para mi oficina superó todas mis expectativas. El proceso fue muy profesional y el resultado final es espectacular."</p>
+                    <p class="testimonial-author">- María González</p>
+                </div>
+                <div class="testimonial-card glass-effect">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Excelente atención al cliente y creatividad única. Mi cartel personalizado se convirtió en la pieza central de mi sala. ¡Totalmente recomendado!"</p>
+                    <p class="testimonial-author">- Carlos Rodríguez</p>
+                </div>
+                <div class="testimonial-card glass-effect">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The New Infinitix entendió perfectamente mi visión. El cartel que diseñaron refleja exactamente lo que tenía en mente. Calidad excepcional."</p>
+                    <p class="testimonial-author">- Ana Martínez</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="glass-effect">
+            <h2>Información de Contacto</h2>
+            <div class="about-content">
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem;">
+                    ¿Tienes preguntas sobre nuestros servicios? ¿Necesitas asesoría para tu proyecto? 
+                    Estamos aquí para ayudarte a crear el cartel perfecto para tu espacio.
+                </p>
+                
+                <div class="footer-content" style="margin-bottom: 0;">
+                    <div class="footer-section">
+                        <h3><i class="fas fa-map-marker-alt"></i> Dirección</h3>
+                        <p>123 Calle Creativa<br>
+                        Ciudad Arte, CA 12345<br>
+                        Colombia</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3><i class="fas fa-phone"></i> Teléfono</h3>
+                        <p>+57 (301) 234-5678</p>
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p>info@thenewinfinitix.com</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3><i class="fas fa-clock"></i> Horarios</h3>
+                        <p>Lunes - Viernes: 9:00 AM - 6:00 PM<br>
+                        Sábados: 10:00 AM - 4:00 PM<br>
+                        Domingos: Cerrado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pedido" class="glass-effect">
+            <h2>Hacer Tu Pedido</h2>
+            <form class="contact-form" id="orderForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Tu Email *" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" id="telefono" name="telefono" placeholder="Tu Teléfono">
+                    </div>
+                    <div class="form-group">
+                        <select id="paquete" name="paquete" required>
+                            <option value="">Selecciona un Paquete *</option>
+                            <option value="basico">Básico - 10.000$</option>
+                            <option value="premium">Premium - $25.000</option>
+                            <option value="profesional">Profesional - $50.000</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <select id="estilo" name="estilo">
+                            <option value="">Estilo Preferido</option>
+                            <option value="personalizado">Personalizado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="dimensiones" name="dimensiones" placeholder="Dimensiones Deseadas (ej: 60x40 cm)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe tu idea para el cartel (tema, colores, elementos específicos, etc.) *" required></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="file-upload">
+                        <input type="file" id="referencias" name="referencias" accept="image/*" multiple>
+                        <label for="referencias" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <br>Sube imágenes de referencia (opcional)
+                            <br><small>Formatos: JPG, PNG, GIF</small>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="fecha_entrega" name="fecha_entrega" min="">
+                    <small>Fecha de entrega deseada (opcional)</small>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Pedido</button>
+            </form>
+        </section>
+
+        <section id="blog" class="glass-effect">
+            <h2>Recursos e Inspiración</h2>
+            <div class="about-content">
+                <h3 style="text-align: left; margin-bottom: 1rem;">Consejos para el Diseño de Carteles</h3>
+                <p style="text-align: left; margin-bottom: 2rem;">
+                    <strong>1. Define tu mensaje principal:</strong> Antes de comenzar, ten claro qué quieres comunicar. Un cartel efectivo transmite una idea central de manera clara y concisa.
+                </p>
+                <p style="text-align: left; margin-bottom: 2rem;">
+                    <strong>2. Considera el espacio:</strong> Piensa dónde irá ubicado tu cartel. Los colores y el estilo deben complementar el ambiente del lugar.
+                </p>
+                <p style="text-align: left; margin-bottom: 2rem;">
+                    <strong>3. Menos es más:</strong> Un diseño limpio y simple suele ser más impactante que uno sobrecargado de elementos.
+                </p>
+                <p style="text-align: left; margin-bottom: 2rem;">
+                    <strong>4. Calidad de impresión:</strong> Asegúrate de que la resolución sea adecuada para el tamaño final del cartel para obtener resultados profesionales.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-effect">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The New Infinitix</h3>
+                <p>Estudio creativo especializado en diseño de carteles personalizados. Transformamos tus ideas en arte visual que define tu espacio.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Útiles</h3>
+                <p><a href="#galeria">Galería de Trabajos</a></p>
+                <p><a href="#proceso">Nuestro Proceso</a></p>
+                <p><a href="#precios">Precios y Paquetes</a></p>
+                <p><a href="#pedido">Hacer Pedido</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Políticas</h3>
+                <p><a href="#">Términos y Condiciones</a></p>
+                <p><a href="#">Política de Privacidad</a></p>
+                <p><a href="#">Política de Devoluciones</a></p>
+                <p><a href="#">FAQ</a></p>
+            </div>
+        </div>
+        <hr style="border: 1px solid var(--border-color-blur); margin: 2rem 0;">
+        <p>&copy; 2025 The New Infinitix - T.H.M. CORP. Todos los derechos reservados.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/t.h.m.corp1?igsh=bTJuZHR0bXBmeDN3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+       
+    </footer>
+    
+    <script>
+
+document.addEventListener('DOMContentLoaded', () => { 
+    const html = document.documentElement;
+
+    // -------- Tema --------
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+    function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        if (themeIcon) themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        localStorage.setItem('theme', theme);
+    }
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(savedTheme);
+    if (themeToggle) themeToggle.addEventListener('click', () => {
+        applyTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
+
+    // -------- Menú móvil --------
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+    }
+
+    // -------- Filtros de galería --------
+    const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+    const posterCards = Array.from(document.querySelectorAll('.poster-card'));
+    if (filterBtns.length) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                posterCards.forEach(card => {
+                    card.style.display = (filter === 'todos' || card.getAttribute('data-category') === filter) ? '' : 'none';
+                });
+            });
+        });
+    }
+
+    // -------- Formulario de pedido --------
+    const orderForm = document.getElementById('orderForm');
+    if (orderForm) {
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(orderForm);
+            const nombre = formData.get('nombre') || 'Cliente';
+            const paquete = formData.get('paquete') || 'paquete';
+            alert(`¡Gracias ${nombre}! Tu pedido del paquete ${String(paquete).charAt(0).toUpperCase() + String(paquete).slice(1)} ha sido recibido. Nos contactaremos en 24h.`);
+            orderForm.reset();
+        });
+    }
+
+    // -------- Fecha mínima (mañana) --------
+    const fechaEntrega = document.getElementById('fecha_entrega');
+    if (fechaEntrega) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        fechaEntrega.min = tomorrow.toISOString().split('T')[0];
+    }
+
+    // -------- File input label --------
+    const fileInput = document.getElementById('referencias');
+    const fileLabel = document.querySelector('.file-upload-label');
+    if (fileInput && fileLabel) {
+        fileInput.addEventListener('change', (e) => {
+            const count = e.target.files.length;
+            if (count > 0) {
+                fileLabel.innerHTML = `<i class="fas fa-check-circle"></i><br>${count} archivo(s) seleccionado(s)<br><small>Click para cambiar</small>`;
+                fileLabel.style.background = 'rgba(184, 134, 11, 0.12)';
+            } else {
+                fileLabel.innerHTML = `<i class="fas fa-cloud-upload-alt"></i><br>Sube imágenes de referencia (opcional)<br><small>Formatos: JPG, PNG, GIF</small>`;
+                fileLabel.style.background = 'transparent';
+            }
+        });
+    }
+
+    // -------- IntersectionObserver: animar secciones --------
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+    // -------- Smooth scroll para enlaces internos --------
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = this.getAttribute('href');
+            if (target.length > 1 && document.querySelector(target)) {
+                e.preventDefault();
+                document.querySelector(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // -------- Header: slide-down on scroll direction --------
+    const header = document.querySelector('header');
+    if (header) {
+        let lastY = window.scrollY;
+        let ticking = false;
+        const downThreshold = 10; // delta mínimo para considerar dirección
+        const activateAfter = 100; // px antes de activar slide-down
+
+        function onScroll() {
+            const currentY = window.scrollY;
+            const delta = currentY - lastY;
+
+            // Scroll hacia abajo y hemos pasado el umbral
+            if (currentY > activateAfter && delta > downThreshold) {
+                header.classList.add('slide-down');
+                header.classList.remove('scrolled');
+            }
+            // Scroll hacia arriba (mostrar header arriba)
+            else if (delta < -downThreshold) {
+                header.classList.remove('slide-down');
+                if (currentY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            }
+            lastY = currentY;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    onScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // estado inicial
+        if (window.scrollY > 50) header.classList.add('scrolled');
+    }
+});
+</script>
+// ...existing code...
+</script>
+
+</body>
+</html>
